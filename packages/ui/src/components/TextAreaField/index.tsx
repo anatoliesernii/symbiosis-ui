@@ -6,7 +6,7 @@ import { Text } from "../Text";
 import { input, inputLabel } from "../sharedStyles";
 import type { TextAreaFieldProps } from "./types";
 
-export const TextAreaField = ({
+export const TextAreaField = React.forwardRef<HTMLTextAreaElement, TextAreaFieldProps>(({
   error,
   required,
   value,
@@ -24,9 +24,8 @@ export const TextAreaField = ({
   size = "base",
   labelWeight,
   className,
-}: TextAreaFieldProps) => {
+}: TextAreaFieldProps, ref) => {
   const formId = id ?? label ?? "";
-  const ref = React.useRef<HTMLTextAreaElement>(null);
 
   const hasError = Boolean(error);
 
@@ -121,4 +120,4 @@ export const TextAreaField = ({
       )}
     </div>
   );
-};
+});
